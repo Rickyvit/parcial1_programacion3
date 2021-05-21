@@ -1,6 +1,7 @@
 <?php
 
-class Connection {
+class Connection
+{
     private static $db;
 
     const SERVIDOR = 'localhost';
@@ -9,14 +10,19 @@ class Connection {
     const BASE = 'forum';
 
 
-    public static function obtener() {
+    public function __construct()
+    {}
+
+    public static function obtener()
+    {
         if (self::$db === null) {
             self::abrir();
         }
         return self::$db;
     }
 
-    private static function abrir() {
+    private static function abrir()
+    {
         $dsn = "mysql:host=" . self::SERVIDOR . ";dbname=" . self::BASE . ";charset=utf8mb4";
         try {
             self::$db = new PDO($dsn, self::USUARIO, self::PASSWORD);
